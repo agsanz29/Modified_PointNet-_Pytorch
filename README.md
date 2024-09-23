@@ -8,4 +8,4 @@ El conjunto de modelos digitalizados es procesado por una red neuronal basada en
 
 El modelo final presenta una exactitud de 0.9917 en entrenamiento, 0.8750 en validación y 0.7750 en test. Estos resultados son satisfactorios, de forma que más del 70% de las nuevas muestras serán identificadas correctamente de forma automática, para una futura implementación dentro del proyecto.
 
-![Resultados de huesos escaneados mediante luz estructurada](images/bones.png)
+![Resultados de huesos escaneados mediante luz estructurada](images/bones_sle.png)
