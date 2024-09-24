@@ -8,6 +8,13 @@ En el proyecto del primer banco virtual de tejidos de Europa, en colaboración c
 
 El conjunto de modelos digitalizados es procesado por una red neuronal basada en PointNet++, con particiones aleatorias del 60% para entrenamiento, 20% para validación y 20% para test. La red tiene diez hiperparámetros, optimizados en función del rendimiento y las métricas de exactitud, kappa de Cohen y coeficiente de correlación de Matthews. 
 
+Para realizar el entrenamiento de la red se realiza desde terminal:
+
+'''
+python train_classification.py --batch_size 8 --model pointnet2_cls_mrg --num_category 7 --epoch 150 --learning_rate 1e-3 --num_point 10000 --optimizer Adam --log_dir pointnet2_01 --decay_rate 1e-4 --use_normals --process_data --use_uniform_sample --folder bones_reduced
+'''
+
+
 El modelo final presenta una exactitud de 0.9917 en entrenamiento, 0.8750 en validación y 0.7750 en test. Estos resultados son satisfactorios, de forma que más del 70% de las nuevas muestras serán identificadas correctamente de forma automática, para una futura implementación dentro del proyecto.
 
 ![Matriz de confusión y gráficas para entrenamiento y validación](images/train_validation.png)
