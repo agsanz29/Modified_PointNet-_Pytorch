@@ -10,9 +10,36 @@ El conjunto de modelos digitalizados es procesado por una red neuronal basada en
 
 Para realizar el entrenamiento de la red se realiza desde terminal:
 
+Primeramente es necesario instalar los requirements en el entorno, para ello:
+
 ```shell
-python train_classification.py --batch_size 8 --model pointnet2_cls_mrg --num_category 7 --epoch 150 --learning_rate 1e-3 --num_point 10000 --optimizer Adam --log_dir pointnet2_01 --decay_rate 1e-4 --use_normals --process_data --use_uniform_sample --folder bones_reduced
+pip install -r requirements_pointnet2.txt
 ```
+
+Una vez instalados y con la base de datos empleada se generan los archivos de texto necesarios para establecer las particiones de entrenamiento, validación y test
+
+```shell
+python FilelisGen.py --folder [object folder]
+```
+
+A continuación se realiza el entrenamiento de la red:
+```shell
+python train_classification.py --batch_size 8 --model pointnet2_cls_mrg --num_category 7 --epoch 150 --learning_rate 1e-3 --num_point 10000 --optimizer Adam --log_dir [log dir]--decay_rate 1e-4 --use_normals --process_data --use_uniform_sample --folder [object folder]
+```
+
+Una vez finalizado el entrenamiento de la red, se obtienen los outputs de la red:
+```shell
+python plot_training_metrics.py --log_dir [log dir] --folder [object folder]
+```
+
+Si las métricas son las esperadas, se realiza el test de la red y la obtención de los outputs:
+```shell
+## Test
+python test_classification.py --batch_size 8 --num_category 7 --num_point 10000 --log_dir [log dir]--use_normals --use_uniform_sample --folder [object folder]
+## Obtención de los outputs
+python plot_test_metrics.py --log_dir [log dir] --folder [object folder]
+```
+
 
 
 El modelo final presenta una exactitud de 0.9917 en entrenamiento, 0.8750 en validación y 0.7750 en test. Estos resultados son satisfactorios, de forma que más del 70% de las nuevas muestras serán identificadas correctamente de forma automática, para una futura implementación dentro del proyecto.
