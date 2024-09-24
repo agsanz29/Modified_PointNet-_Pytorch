@@ -32,6 +32,9 @@ Una vez finalizado el entrenamiento de la red, se obtienen los outputs de la red
 python plot_training_metrics.py --log_dir [log dir] --folder [object folder]
 ```
 
+![Matriz de confusión y gráficas para entrenamiento y validación](images/train_validation.png)
+![Roc para entrenamiento y validación](images/roc_train_valid.png)
+
 Si las métricas son las esperadas, se realiza el test de la red y la obtención de los outputs:
 ```shell
 ## Test
@@ -40,10 +43,6 @@ python test_classification.py --batch_size 8 --num_category 7 --num_point 10000 
 python plot_test_metrics.py --log_dir [log dir] --folder [object folder]
 ```
 
-
-
 El modelo final presenta una exactitud de 0.9917 en entrenamiento, 0.8750 en validación y 0.7750 en test. Estos resultados son satisfactorios, de forma que más del 70% de las nuevas muestras serán identificadas correctamente de forma automática, para una futura implementación dentro del proyecto.
 
-![Matriz de confusión y gráficas para entrenamiento y validación](images/train_validation.png)
-![Roc para entrenamiento y validación](images/roc_train_valid.png)
 ![Matriz de confusión y ROC para test](images/test.png)
